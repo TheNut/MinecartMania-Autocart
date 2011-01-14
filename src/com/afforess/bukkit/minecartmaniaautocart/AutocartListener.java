@@ -1,6 +1,5 @@
 package com.afforess.bukkit.minecartmaniaautocart;
 
-import org.bukkit.Material;
 import org.bukkit.Minecart;
 import org.bukkit.event.vehicle.VehicleDamageEvent;
 import org.bukkit.event.vehicle.VehicleListener;
@@ -36,8 +35,7 @@ public class AutocartListener extends VehicleListener{
     public void onVehicleMove(VehicleMoveEvent event) {
     	if (event.getVehicle() instanceof Minecart) {
     		MinecartManiaMinecart minecart = MinecartManiaWorld.getMinecartManiaMinecart((Minecart)event.getVehicle());
-			if (MinecartManiaWorld.getBlockAt(minecart.getX(), minecart.getY(), minecart.getZ()).getType().equals(Material.Rails))
-	    	{
+			if (minecart.isOnRails()) {
 	    		int l = MinecartManiaWorld.getBlockData(minecart.getX(), minecart.getY(), minecart.getZ());
 
 		    	int ai[][] = Autocart.trackMetadata[l];
