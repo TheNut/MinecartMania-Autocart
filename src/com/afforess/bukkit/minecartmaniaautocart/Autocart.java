@@ -2,8 +2,8 @@ package com.afforess.bukkit.minecartmaniaautocart;
 
 import java.util.Calendar;
 
-import org.bukkit.Entity;
-import org.bukkit.Vector;
+import org.bukkit.entity.Entity;
+import org.bukkit.util.Vector;
 
 import com.afforess.bukkit.minecartmaniacore.DirectionUtils;
 import com.afforess.bukkit.minecartmaniacore.MinecartManiaMinecart;

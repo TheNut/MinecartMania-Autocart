@@ -1,6 +1,6 @@
 package com.afforess.bukkit.minecartmaniaautocart;
 
-import org.bukkit.Minecart;
+import org.bukkit.entity.Minecart;
 import org.bukkit.event.vehicle.VehicleDamageEvent;
 import org.bukkit.event.vehicle.VehicleListener;
 import org.bukkit.event.vehicle.VehicleMoveEvent;

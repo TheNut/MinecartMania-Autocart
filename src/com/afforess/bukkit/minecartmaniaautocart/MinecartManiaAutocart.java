@@ -2,7 +2,6 @@ package com.afforess.bukkit.minecartmaniaautocart;
 import java.io.File;
 import java.util.logging.Logger;
 
-import org.bukkit.Player;
 import org.bukkit.Server;
 import org.bukkit.event.Event;
 import org.bukkit.event.Event.Priority;
@@ -51,13 +50,4 @@ public class MinecartManiaAutocart extends JavaPlugin{
 	public void onDisable(){
 		
 	}
-	
-	public boolean isDebugging(final Player player) {
-		return false;
-    }
-
-    public void setDebugging(final Player player, final boolean value) {
-        
-    }
-
 }
