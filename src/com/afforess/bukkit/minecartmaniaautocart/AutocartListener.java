@@ -18,14 +18,30 @@ public class AutocartListener extends VehicleListener{
     			if (minecart.isOnRails()) {
     				if(event.getAttacker() != null && event.getAttacker().getEntityID() == minecart.minecart.getPassenger().getEntityID()) {
 		    			DirectionUtils.CompassDirection facingDir = DirectionUtils.getDirectionFromRotation((minecart.minecart.getPassenger().getLocation().getYaw() - 90.0F) % 360.0F);
-		    			//Not moving
-		    			if (minecart.getDirectionOfMotion().equals(DirectionUtils.CompassDirection.NO_DIRECTION)) {
-		    				minecart.minecart.setVelocity(Autocart.getMotionFromDirection(facingDir));
-		    			}
-		    			//stop motion
-		    			else {
-		    				minecart.stopCart();
-		    			}
+    					//responding to chat direction prompt
+    					if (minecart.isAtIntersection() && minecart.hasPlayerPassenger()) {
+    						int data = DirectionUtils.getMinetrackRailDataForDirection(minecart.getPreviousFacingDir(), DirectionUtils.getOppositeDirection(facingDir));
+    						if (data != -1) {
+    						//	System.out.println("Moving forward");
+    							MinecartManiaWorld.setBlockData(minecart.getX(), minecart.getY(), minecart.getZ(), data);
+    							minecart.minecart.setVelocity(Autocart.getMotionFromDirection(facingDir));
+    						}
+    						else {
+    							if (minecart.getPreviousFacingDir().equals(facingDir)) {
+    								minecart.minecart.setVelocity(Autocart.getMotionFromDirection(facingDir));
+    							}
+    						}
+    					}
+    					else {
+			    			//Not moving
+			    			if (minecart.getDirectionOfMotion().equals(DirectionUtils.CompassDirection.NO_DIRECTION)) {
+			    				minecart.minecart.setVelocity(Autocart.getMotionFromDirection(facingDir));
+			    			}
+			    			//stop motion
+			    			else {
+			    				minecart.stopCart();
+			    			}
+    					}
     				}
     			}
     		}
@@ -35,7 +51,15 @@ public class AutocartListener extends VehicleListener{
     public void onVehicleMove(VehicleMoveEvent event) {
     	if (event.getVehicle() instanceof Minecart) {
     		MinecartManiaMinecart minecart = MinecartManiaWorld.getMinecartManiaMinecart((Minecart)event.getVehicle());
-			if (minecart.isOnRails()) {
+    		
+    		if (!minecart.isMoving()) {
+    			//Cooldown to prevent minecarts from running away
+	    		if (Autocart.doCooldown(minecart)) {
+	    			return;
+	    		}
+    		}
+    		
+			if (minecart.isOnRails() && (!minecart.isAtIntersection() || !minecart.hasPlayerPassenger())) {
 	    		int l = MinecartManiaWorld.getBlockData(minecart.getX(), minecart.getY(), minecart.getZ());
 
 		    	int ai[][] = Autocart.trackMetadata[l];
