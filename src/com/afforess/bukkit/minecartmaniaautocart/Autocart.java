@@ -69,4 +69,14 @@ public class Autocart {
 		}
 		return false;
 	}
+
+	public static void doThrottle(MinecartManiaMinecart minecart) {
+		Object value = minecart.getDataValue("throttle");
+		if (value != null) {
+			double throttle = ((Double)(value)).doubleValue();
+			minecart.setMotionX(minecart.getMotionX() * throttle / 100);
+			minecart.setMotionY(minecart.getMotionY() * throttle / 100);
+			minecart.setMotionZ(minecart.getMotionZ() * throttle / 100);
+		}
+	}
 }

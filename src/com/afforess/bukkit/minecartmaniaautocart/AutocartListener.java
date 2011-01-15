@@ -16,7 +16,7 @@ public class AutocartListener extends VehicleListener{
     		MinecartManiaMinecart minecart = MinecartManiaWorld.getMinecartManiaMinecart((Minecart)event.getVehicle());
     		if (minecart.minecart.getPassenger() != null) {
     			if (minecart.isOnRails()) {
-    				if(event.getAttacker() != null && event.getAttacker().getEntityID() == minecart.minecart.getPassenger().getEntityID()) {
+    				if(event.getAttacker() != null && event.getAttacker().getEntityId() == minecart.minecart.getPassenger().getEntityId()) {
 		    			DirectionUtils.CompassDirection facingDir = DirectionUtils.getDirectionFromRotation((minecart.minecart.getPassenger().getLocation().getYaw() - 90.0F) % 360.0F);
     					//responding to chat direction prompt
     					if (minecart.isAtIntersection() && minecart.hasPlayerPassenger()) {
@@ -42,6 +42,7 @@ public class AutocartListener extends VehicleListener{
 			    				minecart.stopCart();
 			    			}
     					}
+    					Autocart.doThrottle(minecart);
     				}
     			}
     		}
@@ -71,6 +72,7 @@ public class AutocartListener extends VehicleListener{
 	                d8 = -d8;
 	                d10 = -d10;
 	            }
+	            
 	            d8 /= 5;
 	            d10 /= 5;
 
@@ -78,6 +80,8 @@ public class AutocartListener extends VehicleListener{
 	            
 	            minecart.setMotionX(d13 > 0.0D ? d8 : 0.0D);
 	            minecart.setMotionZ(d13 > 0.0D ? d10 : 0.0D);
+	            
+	            Autocart.doThrottle(minecart);
 	    	}
     	}
     }

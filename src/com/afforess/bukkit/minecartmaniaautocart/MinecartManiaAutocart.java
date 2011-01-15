@@ -24,6 +24,7 @@ public class MinecartManiaAutocart extends JavaPlugin{
 	public static Server server;
 	private static final AutocartListener listener = new AutocartListener();
 	private static final MinecartActionListener actionListener = new MinecartActionListener();
+	private static final AutocartPlayerListener playerListener = new AutocartPlayerListener();
 	
 
 	public void onEnable(){
@@ -40,6 +41,7 @@ public class MinecartManiaAutocart extends JavaPlugin{
 	        getServer().getPluginManager().registerEvent(Event.Type.VEHICLE_DAMAGE, listener, Priority.High, this);
 	        getServer().getPluginManager().registerEvent(Event.Type.VEHICLE_MOVE, listener, Priority.High, this);
 	        getServer().getPluginManager().registerEvent(Event.Type.CUSTOM_EVENT, actionListener, Priority.High, this);
+	        getServer().getPluginManager().registerEvent(Event.Type.PLAYER_COMMAND, playerListener, Priority.Normal, this);
 	        
 	        PluginDescriptionFile pdfFile = this.getDescription();
 	        log.info( pdfFile.getName() + " version " + pdfFile.getVersion() + " is enabled!" );
