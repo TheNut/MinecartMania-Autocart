@@ -22,7 +22,6 @@ public class AutocartListener extends VehicleListener{
     					if (minecart.isAtIntersection() && minecart.hasPlayerPassenger()) {
     						int data = DirectionUtils.getMinetrackRailDataForDirection(minecart.getPreviousFacingDir(), DirectionUtils.getOppositeDirection(facingDir));
     						if (data != -1) {
-    						//	System.out.println("Moving forward");
     							MinecartManiaWorld.setBlockData(minecart.getX(), minecart.getY(), minecart.getZ(), data);
     							minecart.minecart.setVelocity(Autocart.getMotionFromDirection(facingDir));
     						}
