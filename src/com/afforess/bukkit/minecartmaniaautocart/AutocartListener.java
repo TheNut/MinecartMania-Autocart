@@ -4,7 +4,6 @@ import org.bukkit.entity.Minecart;
 import org.bukkit.event.vehicle.VehicleDamageEvent;
 import org.bukkit.event.vehicle.VehicleListener;
 import org.bukkit.event.vehicle.VehicleMoveEvent;
-
 import com.afforess.bukkit.minecartmaniacore.DirectionUtils;
 import com.afforess.bukkit.minecartmaniacore.MinecartManiaMinecart;
 import com.afforess.bukkit.minecartmaniacore.MinecartManiaWorld;
@@ -17,7 +16,7 @@ public class AutocartListener extends VehicleListener{
     		if (minecart.minecart.getPassenger() != null) {
     			if (minecart.isOnRails()) {
     				if(event.getAttacker() != null && event.getAttacker().getEntityId() == minecart.minecart.getPassenger().getEntityId()) {
-		    			DirectionUtils.CompassDirection facingDir = DirectionUtils.getDirectionFromRotation((minecart.minecart.getPassenger().getLocation().getYaw() - 90.0F) % 360.0F);
+		    			DirectionUtils.CompassDirection facingDir = DirectionUtils.getDirectionFromMinecartRotation((minecart.minecart.getPassenger().getLocation().getYaw() - 90.0F) % 360.0F);
     					//responding to chat direction prompt
     					if (minecart.isAtIntersection() && minecart.hasPlayerPassenger()) {
     						int data = DirectionUtils.getMinetrackRailDataForDirection(minecart.getPreviousFacingDir(), DirectionUtils.getOppositeDirection(facingDir));
