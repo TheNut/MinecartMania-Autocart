@@ -15,16 +15,16 @@ public class Autocart {
 	public static Vector getMotionFromDirection(DirectionUtils.CompassDirection direction) {
 		Vector vector = new Vector(0D, 0D, 0D);
 		if (direction.equals(DirectionUtils.CompassDirection.NORTH)) {
-			vector.setX(-0.4D);
+			vector.setX(-0.5D);
 		}
 		else if (direction.equals(DirectionUtils.CompassDirection.EAST)) {
-			vector.setZ(-0.4D);
+			vector.setZ(-0.5D);
 		}
 		else if (direction.equals(DirectionUtils.CompassDirection.SOUTH)) {
-			vector.setX(0.4D);
+			vector.setX(0.5D);
 		}
 		else if (direction.equals(DirectionUtils.CompassDirection.WEST)) {
-			vector.setZ(0.4D);
+			vector.setZ(0.5D);
 		}
 		return vector;
 	}

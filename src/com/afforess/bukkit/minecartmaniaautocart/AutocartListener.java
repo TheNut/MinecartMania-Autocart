@@ -71,8 +71,8 @@ public class AutocartListener extends VehicleListener{
 	                d10 = -d10;
 	            }
 	            
-	            d8 /= 5;
-	            d10 /= 5;
+	            d8 /= 4;
+	            d10 /= 4;
 
 	            double d13 = Math.sqrt(minecart.getMotionX() * minecart.getMotionX() + minecart.getMotionZ() * minecart.getMotionZ());
 	            
