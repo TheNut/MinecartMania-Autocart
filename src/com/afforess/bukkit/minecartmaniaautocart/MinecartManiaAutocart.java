@@ -10,6 +10,8 @@ import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginLoader;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.afforess.bukkit.minecartmaniacore.MinecartManiaWorld;
+
 public class MinecartManiaAutocart extends JavaPlugin{
 
 	public MinecartManiaAutocart(PluginLoader pluginLoader, Server instance,
@@ -17,12 +19,13 @@ public class MinecartManiaAutocart extends JavaPlugin{
 			ClassLoader cLoader) {
 		super(pluginLoader, instance, desc, folder, plugin, cLoader);
 		server = instance;
+		description = desc;
 	}
 
 	public static Logger log;
 	public static Server server;
+	public static PluginDescriptionFile description;
 	private static final AutocartListener listener = new AutocartListener();
-	private static final MinecartActionListener actionListener = new MinecartActionListener();
 	private static final AutocartPlayerListener playerListener = new AutocartPlayerListener();
 	
 
@@ -37,9 +40,9 @@ public class MinecartManiaAutocart extends JavaPlugin{
 			this.setEnabled(false);
 		}
 		else {
-	        getServer().getPluginManager().registerEvent(Event.Type.VEHICLE_DAMAGE, listener, Priority.High, this);
-	        getServer().getPluginManager().registerEvent(Event.Type.VEHICLE_MOVE, listener, Priority.High, this);
-	        getServer().getPluginManager().registerEvent(Event.Type.CUSTOM_EVENT, actionListener, Priority.High, this);
+			Configuration.loadConfiguration();
+	        getServer().getPluginManager().registerEvent(Event.Type.VEHICLE_MOVE, listener, Priority.Normal, this);
+	        getServer().getPluginManager().registerEvent(Event.Type.VEHICLE_DAMAGE, listener, Priority.Normal, this);
 	        getServer().getPluginManager().registerEvent(Event.Type.PLAYER_COMMAND, playerListener, Priority.Normal, this);
 	        
 	        PluginDescriptionFile pdfFile = this.getDescription();
@@ -49,5 +52,14 @@ public class MinecartManiaAutocart extends JavaPlugin{
 	
 	public void onDisable(){
 		
+	}
+	
+	public static boolean isAutocartOnlyForPlayers() {
+		Object o = MinecartManiaWorld.getConfigurationValue("Autocart for Players Only");
+		if (o != null && o instanceof Boolean) {
+			Boolean value = (Boolean)o;
+			return value.booleanValue();
+		}
+		return false;
 	}
 }

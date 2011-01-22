@@ -39,21 +39,5 @@ public class AutocartPlayerListener extends PlayerListener{
     			}
     		}
     	}
-    	/*else if (event.getMessage().toLowerCase().indexOf("/getdata") > -1) {
-    		ChatUtils.sendMultilineMessage(player, "Block Data: " + MinecartManiaWorld.getBlockData(player.getLocation().getBlockX(), player.getLocation().getBlockY(), player.getLocation().getBlockZ()), ChatColor.GREEN.toString());
-    		event.setCancelled(true);
-    	}
-    	else if (event.getMessage().toLowerCase().indexOf("/getpos") > -1) {
-    		ChatUtils.sendMultilineMessage(player, "Pos X: " + player.getLocation().getBlockX() + " Pos Y: " + player.getLocation().getBlockY() + " Pos Z: " + player.getLocation().getBlockZ(), ChatColor.GREEN.toString());
-    		event.setCancelled(true);
-    	}
-    	else if (event.getMessage().toLowerCase().indexOf("/getrotation") > -1) {
-    		ChatUtils.sendMultilineMessage(player, "Yaw: " + player.getLocation().getYaw(), ChatColor.GREEN.toString());
-    		event.setCancelled(true);
-    	}
-    	/*else if (event.getMessage().toLowerCase().indexOf("/direction") > -1) {
-    		ChatUtils.sendMultilineMessage(player, "Direction: " + DirectionUtils.getDirectionFromRotation(player.getLocation().getYaw() -90F %360).toString() + " Minecart Direction: " + DirectionUtils.getDirectionFromMinecartRotation(player.getLocation().getYaw() -90F %360).toString(), ChatColor.GREEN.toString());
-    		event.setCancelled(true);
-    	}*/
     }
 }
