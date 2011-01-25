@@ -1,8 +1,6 @@
 package com.afforess.bukkit.minecartmaniaautocart;
 
 import java.util.Calendar;
-
-import org.bukkit.entity.Entity;
 import org.bukkit.util.Vector;
 
 import com.afforess.bukkit.minecartmaniacore.DirectionUtils;
@@ -30,29 +28,7 @@ public class Autocart {
 	}
 	
 	public static boolean doCooldown(MinecartManiaMinecart minecart) {
-		Object data = minecart.getDataValue("PrevPassenger");
-		if (data != null) {
-			Entity prevPassenger = (Entity)data;
-			//Passenger disembarked
-			if (minecart.minecart.getPassenger() == null) {
-				minecart.setDataValue("Cooldown", new Long(Calendar.getInstance().getTimeInMillis() + 3000));
-				minecart.setDataValue("PrevPassenger", null);
-			}
-			//Changed passenger
-			else if (!minecart.minecart.getPassenger().equals(prevPassenger)) {
-				minecart.setDataValue("Cooldown", null );
-				minecart.setDataValue("PrevPassenger", minecart.minecart.getPassenger());
-			}
-		}
-		else if (data == null) {
-			//New Passenger
-			if (minecart.minecart.getPassenger() != null) {
-				minecart.setDataValue("Cooldown", null);
-				minecart.setDataValue("PrevPassenger", minecart.minecart.getPassenger());
-			}
-		}
-		
-		data = minecart.getDataValue("Cooldown");
+		Object data = minecart.getDataValue("Cooldown");
 		if (data != null) {
 			long cooldown = ((Long)data).longValue();
 			if (Calendar.getInstance().getTimeInMillis() > cooldown) {

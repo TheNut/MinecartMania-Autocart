@@ -1,7 +1,11 @@
 package com.afforess.bukkit.minecartmaniaautocart;
 
+import java.util.Calendar;
+
 import org.bukkit.entity.Minecart;
 import org.bukkit.event.vehicle.VehicleDamageEvent;
+import org.bukkit.event.vehicle.VehicleEnterEvent;
+import org.bukkit.event.vehicle.VehicleExitEvent;
 import org.bukkit.event.vehicle.VehicleListener;
 import org.bukkit.event.vehicle.VehicleMoveEvent;
 
@@ -67,6 +71,20 @@ public class AutocartListener extends VehicleListener{
 		            Autocart.doThrottle(minecart);
 				}
 	    	}
+    	}
+    }
+    
+    public void onVehicleEnter(VehicleEnterEvent event) {
+    	if (event.getVehicle() instanceof Minecart) {
+    		MinecartManiaMinecart minecart = MinecartManiaWorld.getMinecartManiaMinecart((Minecart)event.getVehicle());
+    		minecart.setDataValue("Cooldown", null);
+    	}
+    }
+    
+    public void onVehicleExit(VehicleExitEvent event) {
+    	if (event.getVehicle() instanceof Minecart) {
+    		MinecartManiaMinecart minecart = MinecartManiaWorld.getMinecartManiaMinecart((Minecart)event.getVehicle());
+    		minecart.setDataValue("Cooldown", new Long(Calendar.getInstance().getTimeInMillis() + 3000));
     	}
     }
 }
