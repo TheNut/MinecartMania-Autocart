@@ -38,7 +38,7 @@ public class Configuration {
 			BufferedReader bufferedreader = new BufferedReader(new FileReader(file));
 			for (String s = ""; (s = bufferedreader.readLine()) != null; )
 			{
-				if (s.indexOf(MinecartManiaCore.description.getVersion()) > -1)
+				if (s.indexOf(MinecartManiaAutocart.description.getVersion()) > -1)
 				{
 					return false;
 				}

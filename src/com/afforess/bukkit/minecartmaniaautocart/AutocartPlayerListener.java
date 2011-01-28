@@ -14,6 +14,9 @@ import com.afforess.bukkit.minecartmaniacore.MinecartManiaWorld;
 public class AutocartPlayerListener extends PlayerListener{
     public void onPlayerCommand(PlayerChatEvent event) {
     	Player player = event.getPlayer();
+    	if (event.isCancelled()) {
+    		return;
+    	}
     	if (event.getMessage().indexOf("/throttle") > -1) {
     		if (player.getVehicle() != null && player.getVehicle() instanceof Minecart) {
     			try {

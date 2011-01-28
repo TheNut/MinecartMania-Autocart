@@ -16,7 +16,10 @@ import com.afforess.bukkit.minecartmaniacore.MinecartManiaWorld;
 public class AutocartListener extends VehicleListener{
 	
 	public void onVehicleDamage(VehicleDamageEvent event) {
-		if (event.getVehicle() instanceof Minecart && !event.isCancelled()) {
+		if (event.isCancelled()) {
+    		return;
+    	}
+		if (event.getVehicle() instanceof Minecart) {
     		MinecartManiaMinecart minecart = MinecartManiaWorld.getMinecartManiaMinecart((Minecart)event.getVehicle());
     		if (minecart.minecart.getPassenger() != null) {
     			if (minecart.isOnRails()) {
@@ -75,6 +78,9 @@ public class AutocartListener extends VehicleListener{
     }
     
     public void onVehicleEnter(VehicleEnterEvent event) {
+    	if (event.isCancelled()) {
+    		return;
+    	}
     	if (event.getVehicle() instanceof Minecart) {
     		MinecartManiaMinecart minecart = MinecartManiaWorld.getMinecartManiaMinecart((Minecart)event.getVehicle());
     		minecart.setDataValue("Cooldown", null);
@@ -82,6 +88,9 @@ public class AutocartListener extends VehicleListener{
     }
     
     public void onVehicleExit(VehicleExitEvent event) {
+    	if (event.isCancelled()) {
+    		return;
+    	}
     	if (event.getVehicle() instanceof Minecart) {
     		MinecartManiaMinecart minecart = MinecartManiaWorld.getMinecartManiaMinecart((Minecart)event.getVehicle());
     		minecart.setDataValue("Cooldown", new Long(Calendar.getInstance().getTimeInMillis() + 3000));
