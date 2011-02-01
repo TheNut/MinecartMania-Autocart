@@ -50,7 +50,7 @@ public class AutocartListener extends VehicleListener{
     		}
     		
 			if (minecart.isOnRails() && (!minecart.isAtIntersection() || !minecart.hasPlayerPassenger())) {
-				if (MinecartManiaAutocart.isAutocartOnlyForPlayers() || minecart.hasPlayerPassenger()) {
+				if (!MinecartManiaAutocart.isAutocartOnlyForPlayers() || minecart.hasPlayerPassenger()) {
 		    		int l = MinecartManiaWorld.getBlockData(minecart.getX(), minecart.getY(), minecart.getZ());
 	
 			    	int ai[][] = Autocart.trackMetadata[l];

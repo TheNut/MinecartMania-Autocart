@@ -12,6 +12,7 @@ import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginLoader;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.afforess.bukkit.minecartmaniacore.Configuration;
 import com.afforess.bukkit.minecartmaniacore.MinecartManiaWorld;
 
 public class MinecartManiaAutocart extends JavaPlugin{
@@ -42,7 +43,7 @@ public class MinecartManiaAutocart extends JavaPlugin{
 			this.setEnabled(false);
 		}
 		else {
-			Configuration.loadConfiguration();
+			Configuration.loadConfiguration(description, SettingList.config);
 	        getServer().getPluginManager().registerEvent(Event.Type.VEHICLE_MOVE, listener, Priority.Normal, this);
 	        getServer().getPluginManager().registerEvent(Event.Type.VEHICLE_DAMAGE, listener, Priority.Normal, this);
 	        getServer().getPluginManager().registerEvent(Event.Type.PLAYER_COMMAND, playerListener, Priority.Normal, this);
@@ -58,7 +59,7 @@ public class MinecartManiaAutocart extends JavaPlugin{
 	
 	public boolean onCommand(Player player, Command c, String s, String[] list) {
 		if (s.contains("reloadconfig")) {
-			Configuration.loadConfiguration();
+			Configuration.loadConfiguration(description, SettingList.config);
 		}
 		return true;
 	}

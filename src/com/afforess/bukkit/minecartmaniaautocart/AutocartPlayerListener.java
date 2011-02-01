@@ -7,9 +7,9 @@ import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerListener;
 
 import com.afforess.bukkit.minecartmaniacore.ChatUtils;
-import com.afforess.bukkit.minecartmaniacore.MinecartManiaFlatFile;
 import com.afforess.bukkit.minecartmaniacore.MinecartManiaMinecart;
 import com.afforess.bukkit.minecartmaniacore.MinecartManiaWorld;
+import com.afforess.bukkit.minecartmaniacore.StringUtils;
 
 public class AutocartPlayerListener extends PlayerListener{
     public void onPlayerCommand(PlayerChatEvent event) {
@@ -20,7 +20,7 @@ public class AutocartPlayerListener extends PlayerListener{
     	if (event.getMessage().indexOf("/throttle") > -1) {
     		if (player.getVehicle() != null && player.getVehicle() instanceof Minecart) {
     			try {
-		    		String num = MinecartManiaFlatFile.getNumber(event.getMessage());
+		    		String num = StringUtils.getNumber(event.getMessage());
 		    		double throttle = Double.valueOf(num);
 		    		if (throttle <= 150D && throttle >= 0.0D) {
 			    		MinecartManiaMinecart minecart = MinecartManiaWorld.getMinecartManiaMinecart((Minecart)player.getVehicle());
