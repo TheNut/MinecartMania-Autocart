@@ -1,3 +1,4 @@
 name: Minecart Mania Autocart
-main: com.afforess.bukkit.minecartmaniaautocart.MinecartManiaAutocart
+main: com.afforess.minecartmaniaautocart.MinecartManiaAutocart
 version: 0.53
+author: Afforess
