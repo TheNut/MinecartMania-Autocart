@@ -1,4 +1,4 @@
-package com.afforess.bukkit.minecartmaniaautocart;
+package com.afforess.minecartmaniaautocart;
 
 import com.afforess.bukkit.minecartmaniacore.config.Setting;
 

@@ -1,4 +1,4 @@
-package com.afforess.bukkit.minecartmaniaautocart;
+package com.afforess.minecartmaniaautocart;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Minecart;

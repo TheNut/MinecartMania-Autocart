@@ -1,4 +1,4 @@
-package com.afforess.bukkit.minecartmaniaautocart;
+package com.afforess.minecartmaniaautocart;
 
 import java.util.Calendar;
 import org.bukkit.util.Vector;
