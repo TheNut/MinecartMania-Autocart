@@ -6,10 +6,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerListener;
 
-import com.afforess.bukkit.minecartmaniacore.ChatUtils;
-import com.afforess.bukkit.minecartmaniacore.MinecartManiaMinecart;
-import com.afforess.bukkit.minecartmaniacore.MinecartManiaWorld;
-import com.afforess.bukkit.minecartmaniacore.StringUtils;
+import com.afforess.minecartmaniacore.ChatUtils;
+import com.afforess.minecartmaniacore.MinecartManiaMinecart;
+import com.afforess.minecartmaniacore.MinecartManiaWorld;
+import com.afforess.minecartmaniacore.StringUtils;
 
 public class AutocartPlayerListener extends PlayerListener{
     public void onPlayerCommand(PlayerChatEvent event) {

@@ -12,8 +12,8 @@ import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginLoader;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.afforess.bukkit.minecartmaniacore.Configuration;
-import com.afforess.bukkit.minecartmaniacore.MinecartManiaWorld;
+import com.afforess.minecartmaniacore.Configuration;
+import com.afforess.minecartmaniacore.MinecartManiaWorld;
 
 public class MinecartManiaAutocart extends JavaPlugin{
 

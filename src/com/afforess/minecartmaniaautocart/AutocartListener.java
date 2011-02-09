@@ -9,9 +9,9 @@ import org.bukkit.event.vehicle.VehicleExitEvent;
 import org.bukkit.event.vehicle.VehicleListener;
 import org.bukkit.event.vehicle.VehicleMoveEvent;
 
-import com.afforess.bukkit.minecartmaniacore.DirectionUtils;
-import com.afforess.bukkit.minecartmaniacore.MinecartManiaMinecart;
-import com.afforess.bukkit.minecartmaniacore.MinecartManiaWorld;
+import com.afforess.minecartmaniacore.DirectionUtils;
+import com.afforess.minecartmaniacore.MinecartManiaMinecart;
+import com.afforess.minecartmaniacore.MinecartManiaWorld;
 
 public class AutocartListener extends VehicleListener{
 	

@@ -3,8 +3,8 @@ package com.afforess.minecartmaniaautocart;
 import java.util.Calendar;
 import org.bukkit.util.Vector;
 
-import com.afforess.bukkit.minecartmaniacore.DirectionUtils;
-import com.afforess.bukkit.minecartmaniacore.MinecartManiaMinecart;
+import com.afforess.minecartmaniacore.DirectionUtils;
+import com.afforess.minecartmaniacore.MinecartManiaMinecart;
 
 public class Autocart {
 
