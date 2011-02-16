@@ -72,4 +72,8 @@ public class MinecartManiaAutocart extends JavaPlugin{
 		}
 		return false;
 	}
+	
+	public static int getDefaultThrottle() {
+		return MinecartManiaWorld.getIntValue(MinecartManiaWorld.getConfigurationValue("Default Throttle"));
+	}
 }

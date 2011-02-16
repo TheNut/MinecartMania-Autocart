@@ -6,10 +6,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerListener;
 
-import com.afforess.minecartmaniacore.ChatUtils;
 import com.afforess.minecartmaniacore.MinecartManiaMinecart;
 import com.afforess.minecartmaniacore.MinecartManiaWorld;
-import com.afforess.minecartmaniacore.StringUtils;
+import com.afforess.minecartmaniacore.utils.ChatUtils;
+import com.afforess.minecartmaniacore.utils.StringUtils;
 
 public class AutocartPlayerListener extends PlayerListener{
     public void onPlayerCommand(PlayerChatEvent event) {
@@ -22,7 +22,7 @@ public class AutocartPlayerListener extends PlayerListener{
     			try {
 		    		String num = StringUtils.getNumber(event.getMessage());
 		    		double throttle = Double.valueOf(num);
-		    		if (throttle <= 150D && throttle >= 0.0D) {
+		    		if (throttle <= 200D && throttle >= 0.0D) {
 			    		MinecartManiaMinecart minecart = MinecartManiaWorld.getMinecartManiaMinecart((Minecart)player.getVehicle());
 			    		minecart.setDataValue("throttle", new Double(throttle));
 			    		event.setCancelled(true);

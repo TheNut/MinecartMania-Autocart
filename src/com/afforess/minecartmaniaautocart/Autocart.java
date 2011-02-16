@@ -3,8 +3,8 @@ package com.afforess.minecartmaniaautocart;
 import java.util.Calendar;
 import org.bukkit.util.Vector;
 
-import com.afforess.minecartmaniacore.DirectionUtils;
 import com.afforess.minecartmaniacore.MinecartManiaMinecart;
+import com.afforess.minecartmaniacore.utils.DirectionUtils;
 
 public class Autocart {
 
@@ -44,11 +44,12 @@ public class Autocart {
 
 	public static void doThrottle(MinecartManiaMinecart minecart) {
 		Object value = minecart.getDataValue("throttle");
-		if (value != null) {
-			double throttle = ((Double)(value)).doubleValue();
-			minecart.setMotionX(minecart.getMotionX() * throttle / 100);
-			minecart.setMotionY(minecart.getMotionY() * throttle / 100);
-			minecart.setMotionZ(minecart.getMotionZ() * throttle / 100);
+		if (value == null) {
+			value = new Double(MinecartManiaAutocart.getDefaultThrottle());
 		}
+		double throttle = ((Double)(value)).doubleValue();
+		minecart.setMotionX(minecart.getMotionX() * throttle / 100);
+		minecart.setMotionY(minecart.getMotionY() * throttle / 100);
+		minecart.setMotionZ(minecart.getMotionZ() * throttle / 100);
 	}
 }
