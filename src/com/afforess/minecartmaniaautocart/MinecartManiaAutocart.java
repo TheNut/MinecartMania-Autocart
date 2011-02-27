@@ -35,7 +35,7 @@ public class MinecartManiaAutocart extends JavaPlugin{
 		else {
 			Configuration.loadConfiguration(description, SettingList.config);
 	        getServer().getPluginManager().registerEvent(Event.Type.VEHICLE_MOVE, listener, Priority.Normal, this);
-	        getServer().getPluginManager().registerEvent(Event.Type.VEHICLE_DAMAGE, listener, Priority.Normal, this);
+	        getServer().getPluginManager().registerEvent(Event.Type.VEHICLE_DAMAGE, listener, Priority.Monitor, this);
 	        getServer().getPluginManager().registerEvent(Event.Type.PLAYER_COMMAND, playerListener, Priority.Normal, this);
 	        
 	        PluginDescriptionFile pdfFile = this.getDescription();
