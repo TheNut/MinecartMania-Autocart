@@ -3,7 +3,6 @@ package com.afforess.minecartmaniaautocart;
 import java.util.Calendar;
 
 import org.bukkit.entity.Minecart;
-import org.bukkit.event.vehicle.VehicleDamageEvent;
 import org.bukkit.event.vehicle.VehicleEnterEvent;
 import org.bukkit.event.vehicle.VehicleExitEvent;
 import org.bukkit.event.vehicle.VehicleListener;
@@ -11,32 +10,8 @@ import org.bukkit.event.vehicle.VehicleMoveEvent;
 
 import com.afforess.minecartmaniacore.MinecartManiaMinecart;
 import com.afforess.minecartmaniacore.MinecartManiaWorld;
-import com.afforess.minecartmaniacore.utils.DirectionUtils;
 
 public class AutocartListener extends VehicleListener{
-	
-	public void onVehicleDamage(VehicleDamageEvent event) {
-		if (event.isCancelled()) {
-    		return;
-    	}
-		if (event.getVehicle() instanceof Minecart) {
-    		MinecartManiaMinecart minecart = MinecartManiaWorld.getMinecartManiaMinecart((Minecart)event.getVehicle());
-    		if (minecart.minecart.getPassenger() != null) {
-    			if (minecart.isOnRails()) {
-    				if(event.getAttacker() != null && event.getAttacker().getEntityId() == minecart.minecart.getPassenger().getEntityId()) {
-    					if (!minecart.isMoving()) {
-	    					DirectionUtils.CompassDirection facingDir = DirectionUtils.getDirectionFromMinecartRotation((minecart.minecart.getPassenger().getLocation().getYaw() - 90.0F) % 360.0F);
-	    					
-	    					minecart.minecart.setVelocity(Autocart.getMotionFromDirection(facingDir));
-    					}
-    					else {
-    						minecart.stopCart();
-    					}
-    				}
-    			}
-    		}
-		}
-    }
 	
     public void onVehicleMove(VehicleMoveEvent event) {
     	if (event.getVehicle() instanceof Minecart) {
