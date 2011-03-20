@@ -2,16 +2,15 @@ package com.afforess.minecartmaniaautocart;
 import java.util.logging.Logger;
 
 import org.bukkit.Server;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 import org.bukkit.event.Event;
 import org.bukkit.event.Event.Priority;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.afforess.minecartmaniacore.Configuration;
+import com.afforess.minecartmaniacore.MinecartManiaCore;
 import com.afforess.minecartmaniacore.MinecartManiaWorld;
+import com.afforess.minecartmaniacore.config.MinecartManiaConfigurationParser;
 
 public class MinecartManiaAutocart extends JavaPlugin{
 
@@ -33,7 +32,7 @@ public class MinecartManiaAutocart extends JavaPlugin{
 			this.setEnabled(false);
 		}
 		else {
-			Configuration.loadConfiguration(description, SettingList.config);
+			MinecartManiaConfigurationParser.read(description.getName().replaceAll(" ","") + "Configuration.xml", MinecartManiaCore.dataDirectory, SettingList.config);
 			getServer().getPluginManager().registerEvent(Event.Type.CUSTOM_EVENT, actionListener, Priority.Normal, this);
 	        getServer().getPluginManager().registerEvent(Event.Type.VEHICLE_MOVE, listener, Priority.Normal, this);
 	        getServer().getPluginManager().registerEvent(Event.Type.VEHICLE_ENTER, listener, Priority.Normal, this);
@@ -46,13 +45,6 @@ public class MinecartManiaAutocart extends JavaPlugin{
 	
 	public void onDisable(){
 		
-	}
-	
-	public boolean onCommand(CommandSender sender, Command command, String commandLabel, String[] args) {
-		if (commandLabel.contains("reloadconfig")) {
-			Configuration.loadConfiguration(description, SettingList.config);
-		}
-		return true;
 	}
 	
 	public static boolean isAutocartOnlyForPlayers() {
