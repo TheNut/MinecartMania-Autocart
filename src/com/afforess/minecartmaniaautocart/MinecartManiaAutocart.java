@@ -32,7 +32,7 @@ public class MinecartManiaAutocart extends JavaPlugin{
 			this.setEnabled(false);
 		}
 		else {
-			MinecartManiaConfigurationParser.read(description.getName().replaceAll(" ","") + "Configuration.xml", MinecartManiaCore.dataDirectory, SettingList.config);
+			MinecartManiaConfigurationParser.read(description.getName().replaceAll(" ","") + "Configuration.xml", MinecartManiaCore.dataDirectory, new AutocartSettingParser());
 			getServer().getPluginManager().registerEvent(Event.Type.CUSTOM_EVENT, actionListener, Priority.Normal, this);
 	        getServer().getPluginManager().registerEvent(Event.Type.VEHICLE_MOVE, listener, Priority.Normal, this);
 	        getServer().getPluginManager().registerEvent(Event.Type.VEHICLE_ENTER, listener, Priority.Normal, this);
@@ -48,7 +48,7 @@ public class MinecartManiaAutocart extends JavaPlugin{
 	}
 	
 	public static boolean isAutocartOnlyForPlayers() {
-		Object o = MinecartManiaWorld.getConfigurationValue("Autocart for Players Only");
+		Object o = MinecartManiaWorld.getConfigurationValue("AutocartForPlayersOnly");
 		if (o != null && o instanceof Boolean) {
 			Boolean value = (Boolean)o;
 			return value.booleanValue();
@@ -57,6 +57,6 @@ public class MinecartManiaAutocart extends JavaPlugin{
 	}
 	
 	public static int getDefaultThrottle() {
-		return MinecartManiaWorld.getIntValue(MinecartManiaWorld.getConfigurationValue("Default Throttle"));
+		return MinecartManiaWorld.getIntValue(MinecartManiaWorld.getConfigurationValue("DefaultThrottle"));
 	}
 }
