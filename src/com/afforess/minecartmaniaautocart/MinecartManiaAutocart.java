@@ -1,6 +1,4 @@
 package com.afforess.minecartmaniaautocart;
-import java.util.logging.Logger;
-
 import org.bukkit.Server;
 import org.bukkit.event.Event;
 import org.bukkit.event.Event.Priority;
@@ -10,17 +8,17 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.afforess.minecartmaniacore.MinecartManiaCore;
 import com.afforess.minecartmaniacore.MinecartManiaWorld;
 import com.afforess.minecartmaniacore.config.MinecartManiaConfigurationParser;
+import com.afforess.minecartmaniacore.debug.MinecartManiaLogger;
 
 public class MinecartManiaAutocart extends JavaPlugin{
 
-	public static Logger log;
+	public static MinecartManiaLogger log = MinecartManiaLogger.getInstance();
 	public static Server server;
 	public static PluginDescriptionFile description;
 	private static final AutocartListener listener = new AutocartListener();
 	private static final AutocartActionListener actionListener = new AutocartActionListener();
 	
 	public void onEnable(){
-		log = Logger.getLogger("Minecraft");
 		server = this.getServer();
 		description = this.getDescription();
 		MinecartManiaConfigurationParser.read(description.getName().replaceAll(" ","") + "Configuration.xml", MinecartManiaCore.dataDirectory, new AutocartSettingParser());
