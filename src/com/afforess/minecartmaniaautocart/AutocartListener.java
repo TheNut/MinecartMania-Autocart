@@ -9,8 +9,11 @@ import org.bukkit.event.vehicle.VehicleExitEvent;
 import org.bukkit.event.vehicle.VehicleListener;
 import org.bukkit.event.vehicle.VehicleMoveEvent;
 
+import com.afforess.minecartmaniacore.Item;
 import com.afforess.minecartmaniacore.MinecartManiaMinecart;
 import com.afforess.minecartmaniacore.MinecartManiaWorld;
+import com.afforess.minecartmaniacore.config.ControlBlock;
+import com.afforess.minecartmaniacore.config.ControlBlockList;
 import com.afforess.minecartmaniacore.config.LocaleParser;
 
 public class AutocartListener extends VehicleListener{
@@ -18,15 +21,13 @@ public class AutocartListener extends VehicleListener{
 	public void onVehicleMove(VehicleMoveEvent event) {
 		if (event.getVehicle() instanceof Minecart) {
 			MinecartManiaMinecart minecart = MinecartManiaWorld.getMinecartManiaMinecart((Minecart)event.getVehicle());
-			
-			if (!minecart.isMoving()) {
-				//Cooldown to prevent minecarts from running away
-				if (Autocart.doCooldown(minecart)) {
-					return;
-				}
+		
+			//Cooldown to prevent minecarts from running away
+			if (Autocart.doCooldown(minecart)) {
+				return;
 			}
 			
-			if (minecart.isOnRails() && (!minecart.isAtIntersection() || !minecart.hasPlayerPassenger())) {
+			if (minecart.getLocation().getBlock().getTypeId() == Item.RAILS.getId() && (!minecart.isAtIntersection() || !minecart.hasPlayerPassenger())) {
 				if (!MinecartManiaAutocart.isAutocartOnlyForPlayers() || minecart.hasPlayerPassenger()) {
 					int l = MinecartManiaWorld.getBlockData(minecart.minecart.getWorld(), minecart.getX(), minecart.getY(), minecart.getZ());
 	
@@ -73,6 +74,12 @@ public class AutocartListener extends VehicleListener{
 		}
 		if (event.getVehicle() instanceof Minecart) {
 			MinecartManiaMinecart minecart = MinecartManiaWorld.getMinecartManiaMinecart((Minecart)event.getVehicle());
+			ControlBlock cb = ControlBlockList.getControlBlock(minecart.getItemBeneath());
+			if (cb != null) {
+				if (cb.isEjectorBlock()) {
+					return;
+				}
+			}
 			minecart.setDataValue("Cooldown", new Long(Calendar.getInstance().getTimeInMillis() + 3000));
 		}
 	}
