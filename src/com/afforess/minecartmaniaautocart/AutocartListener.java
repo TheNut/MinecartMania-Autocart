@@ -75,12 +75,9 @@ public class AutocartListener extends VehicleListener{
 		if (event.getVehicle() instanceof Minecart) {
 			MinecartManiaMinecart minecart = MinecartManiaWorld.getMinecartManiaMinecart((Minecart)event.getVehicle());
 			ControlBlock cb = ControlBlockList.getControlBlock(minecart.getItemBeneath());
-			if (cb != null) {
-				if (cb.isEjectorBlock()) {
-					return;
-				}
+			if (!minecart.isMoving() && cb == null || !cb.isEjectorBlock()) {
+				minecart.setDataValue("Cooldown", new Long(Calendar.getInstance().getTimeInMillis() + 3000));
 			}
-			minecart.setDataValue("Cooldown", new Long(Calendar.getInstance().getTimeInMillis() + 3000));
 		}
 	}
 }
