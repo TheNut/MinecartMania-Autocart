@@ -12,8 +12,6 @@ import org.bukkit.event.vehicle.VehicleMoveEvent;
 import com.afforess.minecartmaniacore.Item;
 import com.afforess.minecartmaniacore.MinecartManiaMinecart;
 import com.afforess.minecartmaniacore.MinecartManiaWorld;
-import com.afforess.minecartmaniacore.config.ControlBlock;
-import com.afforess.minecartmaniacore.config.ControlBlockList;
 import com.afforess.minecartmaniacore.config.LocaleParser;
 
 public class AutocartListener extends VehicleListener{
@@ -74,8 +72,7 @@ public class AutocartListener extends VehicleListener{
 		}
 		if (event.getVehicle() instanceof Minecart) {
 			MinecartManiaMinecart minecart = MinecartManiaWorld.getMinecartManiaMinecart((Minecart)event.getVehicle());
-			ControlBlock cb = ControlBlockList.getControlBlock(minecart.getItemBeneath());
-			if (!minecart.isMoving() && cb == null || !cb.isEjectorBlock()) {
+			if (!minecart.isMoving()) {
 				minecart.setDataValue("Cooldown", new Long(Calendar.getInstance().getTimeInMillis() + 3000));
 			}
 		}
