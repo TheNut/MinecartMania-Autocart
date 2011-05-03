@@ -17,7 +17,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import com.afforess.minecartmaniacore.MinecartManiaWorld;
+import com.afforess.minecartmaniacore.world.MinecartManiaWorld;
 import com.afforess.minecartmaniacore.config.MinecartManiaConfigurationParser;
 import com.afforess.minecartmaniacore.config.SettingParser;
 import com.afforess.minecartmaniacore.debug.MinecartManiaLogger;
