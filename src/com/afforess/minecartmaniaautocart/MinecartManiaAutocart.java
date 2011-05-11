@@ -43,6 +43,6 @@ public class MinecartManiaAutocart extends JavaPlugin{
 	}
 	
 	public static int getDefaultThrottle() {
-		return MinecartManiaWorld.getIntValue(MinecartManiaWorld.getConfigurationValue("DefaultThrottle"));
+		return (Integer)MinecartManiaWorld.getConfigurationValue("DefaultThrottle");
 	}
 }
